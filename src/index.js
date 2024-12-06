@@ -3,12 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createBrowserRouter, RouterProvider,Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Help from "./components/Help";
 import Offers from "./components/Offers";
 import Search from "./components/Search";
 import Cart from "./components/Cart";
 import SignIn from "./components/SignIn";
+import RestaurantMenu from "./components/RestaurantMenu";
+import Browse from "./components/Browse";
 
 const appRouter = createBrowserRouter([
   {
@@ -20,12 +22,20 @@ const appRouter = createBrowserRouter([
         element: <Help />,
       },
       {
+        path: "/",
+        element: <Browse />,
+      },
+      {
         path: "/Search",
         element: <Search />,
       },
       {
         path: "/Offers",
         element: <Offers />,
+      },
+      {
+        path: "/restaurant/:resId",
+        element: <RestaurantMenu />,
       },
       {
         path: "/Cart",

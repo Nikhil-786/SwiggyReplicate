@@ -1,10 +1,11 @@
 import { RES_IMG } from "../utils/Constants";
 
 const RestaurantCard = (props) => {
-  const { resDetails } = props;
+const { resDetails } = props;
+
   return (
-    <div className="m-4 p-4 w-[250px] bg-gray-500 rounded-2xl hover:bg-blue-400">
-      <img className="h-48 w-72"
+    <div className="m-4 p-4 w-[250px] bg-gray-500 rounded-2xl hover:bg-blue-400"  >
+      <img className="h-48 w-72 cursor-pointer"
         src={RES_IMG + resDetails?.info.cloudinaryImageId}
         alt="RestaurantImage"
       />

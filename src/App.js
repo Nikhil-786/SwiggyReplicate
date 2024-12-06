@@ -12,7 +12,7 @@ function App() {
     <Provider store={appStore}>
     <div className="App">
      <Header/>
-     <Browse></Browse>
+     {/* <Browse></Browse> */}
      <Outlet/>
     </div>
     </Provider>
