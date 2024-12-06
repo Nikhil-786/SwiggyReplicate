@@ -25,3 +25,23 @@ slice(cartSlice)
 dispatch (action)
 selector
 
+//Make menu items for every restaurant items.
+first need to create a Method that fetches API.
+//link menu to all restaurant.
+
+//linked menu to restaurant .
+//getting restaurant menu category wise,
+//To Do
+recomended
+  menu items
+Daily value briyani @199
+  menu Items
+briyani feast thali
+  menu items
+Non-veg Mughal briyani 
+  menu Items
+Chicken Starter
+  menu items
+Drinks & desserts
+Menu Items
+
