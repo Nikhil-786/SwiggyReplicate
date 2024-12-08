@@ -32,6 +32,7 @@ first need to create a Method that fetches API.
 //linked menu to restaurant .
 //getting restaurant menu category wise,
 //To Do
+
 recomended
   menu items
 Daily value briyani @199
@@ -45,3 +46,6 @@ Chicken Starter
 Drinks & desserts
 Menu Items
 
+//Style menu items that are created.
+completed
+//added image and to every menu add button "Add Button" to the image.

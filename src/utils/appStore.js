@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import MovieSlice from './MovieSlice'
+import MovieSlice from './MovieSlice';
+import cartReducer from './cartSlice';
 
 const appStore = configureStore({
     reducer:{
-        movies:MovieSlice
+        movies:MovieSlice,
+        cart:cartReducer
 
     }
 });

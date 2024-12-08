@@ -8,9 +8,11 @@ import {
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Header = () => {
   const [location, setLocation] = useState();
-
+const cartItems = useSelector((store)=>store.cart.items);
+console.log(cartItems);
   useEffect(() => {
     Location();
   }, []);
@@ -20,6 +22,7 @@ const Header = () => {
     const json = await data.json();
     setLocation(json.city);
   };
+
 
   return (
     <div className=" bg-white shadow-lg">
@@ -85,8 +88,8 @@ const Header = () => {
             className=" text-lg font-bold mt-8 ml-4"
             icon={faCartShopping}
           />
-       <Link to={'/Cart'}><label className=" text-lg font-bold mt-8 ml-4" htmlFor="Cart">
-            Cart
+       <Link to={'/Cart'}><label className=" text-lg font-bold mt-8 ml-4" htmlFor="Cart" >
+            Cart {cartItems.length}
           </label></Link>   
         </div>
       </div>
