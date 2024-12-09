@@ -9,10 +9,13 @@ reducers:{
     addItem:(state,action)=>{
 
         //mutating the state.
+      
         state.items.push(action.payload);
     },
     removeItem:(state,action)=>{
-        state.items.pop();
+        //console.log(action);
+        state.items.delete(action.payload);
+       
     },
     clearCart:(state,action)=>{
         state.items.length=0;

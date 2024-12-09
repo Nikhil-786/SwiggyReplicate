@@ -49,3 +49,7 @@ Menu Items
 //Style menu items that are created.
 completed
 //added image and to every menu add button "Add Button" to the image.
+//using redux added  feature from cart.
+9-12-2024
+//remove and clear cart feature.
+//addec clear cart features.
