@@ -24,6 +24,7 @@ const RestaurantMenu = () => {
     console.log(json.data);
     setResMenu(json.data);
   };
+//this conditional rendering
 
   if (resMenu == null) return <Shimmer />;
 

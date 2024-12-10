@@ -11,8 +11,9 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 const Header = () => {
   const [location, setLocation] = useState();
-const cartItems = useSelector((store)=>store.cart.items);
-console.log(cartItems);
+  const cartItems = useSelector((store) => store.cart.items);
+  const [state, setState] = useState("Login");
+  console.log(cartItems);
   useEffect(() => {
     Location();
   }, []);
@@ -22,17 +23,21 @@ console.log(cartItems);
     const json = await data.json();
     setLocation(json.city);
   };
-
+  const handleClick = () => {
+    state === "Login" ? setState("Logout") : setState("Login");
+  };
 
   return (
     <div className=" bg-white shadow-lg">
       <div className="flex  justify-evenly ">
         <div className="flex">
-         <Link to={'/'}><img
-            className=" w-20 py-4 pl-2 rounded-lg"
-            src="https://play-lh.googleusercontent.com/ymXDmYihTOzgPDddKSvZRKzXkboAapBF2yoFIeQBaWSAJmC9IUpSPKgvfaAgS5yFxQ"
-            alt=""
-          /></Link> 
+          <Link to={"/"}>
+            <img
+              className=" w-20 py-4 pl-2 rounded-lg"
+              src="https://play-lh.googleusercontent.com/ymXDmYihTOzgPDddKSvZRKzXkboAapBF2yoFIeQBaWSAJmC9IUpSPKgvfaAgS5yFxQ"
+              alt=""
+            />
+          </Link>
           <label className=" text-lg font-bold mt-8 ml-4 " htmlFor="Location">
             {location}
           </label>
@@ -68,7 +73,6 @@ console.log(cartItems);
             icon={faPenNib}
           />
           <Link to={"/Help"}>
-            
             <label className=" text-lg font-bold mt-8 ml-4 " htmlFor="Help">
               Help
             </label>
@@ -79,19 +83,26 @@ console.log(cartItems);
             className=" text-lg font-bold mt-8 ml-4"
             icon={faUser}
           />
-         <Link to={'/SignIn'}><label className=" text-lg font-bold mt-8 ml-4" htmlFor="SignIn">
-            SignIn
-          </label></Link> 
+          <Link to={"/SignIn"}>
+            <label className=" text-lg font-bold mt-8 ml-4" htmlFor="SignIn">
+              SignIn
+            </label>
+          </Link>
         </div>
         <div>
           <FontAwesomeIcon
             className=" text-lg font-bold mt-8 ml-4"
             icon={faCartShopping}
           />
-       <Link to={'/Cart'}><label className=" text-lg font-bold mt-8 ml-4" htmlFor="Cart" >
-            Cart {cartItems.length}
-          </label></Link>   
+          <Link to={"/Cart"}>
+            <label className=" text-lg font-bold mt-8 ml-4" htmlFor="Cart">
+              Cart {cartItems.length}
+            </label>
+          </Link>
         </div>
+        <button className=" h-9 w-24 bg-green-500 mt-10" onClick={handleClick}>
+          {state}
+        </button>
       </div>
     </div>
   );

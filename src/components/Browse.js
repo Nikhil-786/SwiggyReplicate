@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { IMG_BANNER } from "../utils/Constants";
 import RestaurantCard from "./RestaurantCards";
 import { Link } from "react-router-dom";
+import RestaurantShimmer from "./RestaurantShimmer";
 
 const Browse = () => {
   useMovieHooks();
@@ -17,13 +18,16 @@ const Browse = () => {
       store?.movies?.Items[0]?.data?.cards[1]?.card?.card?.gridElements
         ?.infoWithStyle?.restaurants
   );
-  console.log(resDetails);
+console.log(resDetails?.length);
+  // if (resDetails.length == null) return <RestaurantShimmer />;
 
   // const handleClick = () => {
   //   useRestaurantMenu(resId);
   // };
 
-  return (
+  return resDetails?.length===0 ? (
+    <RestaurantShimmer />
+  ) : (
     <div>
       <div className="flex">
         {bannerDetails?.map((data) => (
@@ -40,7 +44,7 @@ const Browse = () => {
           // onClick={ handleClick}
         >
           {resDetails?.map((restaurant) => (
-            <Link to={'/restaurant/'+restaurant.info.id}>
+            <Link to={"/restaurant/" + restaurant.info.id}>
               <RestaurantCard
                 key={restaurant.info.id}
                 resDetails={restaurant}

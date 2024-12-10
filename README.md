@@ -53,3 +53,6 @@ completed
 9-12-2024
 //remove and clear cart feature.
 //addec clear cart features.
+//offers pages
+//shimmer UI
+// build  Search functionality
