@@ -60,3 +60,8 @@ todo
 //Need to create class based compoenent for  help
 //how to use state  in class based component
 //life cyle of classes.
+// in classes we are going to fetch details of github account and render id
+//custom hooks for  restaurant menu
+//custom hooks for online and offline mood.
+//Added lazy loading concept using suspens hooks.
+

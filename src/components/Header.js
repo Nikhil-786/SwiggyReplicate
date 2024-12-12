@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useOfflineHook from "../hooks/useOfflineHook";
 import {
   faBomb,
   faPenNib,
@@ -10,6 +11,7 @@ import {
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 const Header = () => {
+  const offline = useOfflineHook();
   const [location, setLocation] = useState();
   const cartItems = useSelector((store) => store.cart.items);
   const [state, setState] = useState("Login");
@@ -100,9 +102,17 @@ const Header = () => {
             </label>
           </Link>
         </div>
+        <div>
+          <Link to={"/Grocery"}>
+            <label className=" text-lg font-bold mt-8 ml-4" htmlFor="Cart">
+             Grocery
+            </label>
+          </Link>
+        </div>
         <button className=" h-9 w-24 bg-green-500 mt-10" onClick={handleClick}>
           {state}
         </button>
+        <label>OnlineStatus:{offline===true?'Online✅':'offline🔴'}</label>
       </div>
     </div>
   );

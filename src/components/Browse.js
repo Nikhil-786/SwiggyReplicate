@@ -4,6 +4,7 @@ import { IMG_BANNER } from "../utils/Constants";
 import RestaurantCard from "./RestaurantCards";
 import { Link } from "react-router-dom";
 import RestaurantShimmer from "./RestaurantShimmer";
+import useOfflineHook from "../hooks/useOfflineHook";
 
 const Browse = () => {
   useMovieHooks();
@@ -24,6 +25,10 @@ console.log(resDetails?.length);
   // const handleClick = () => {
   //   useRestaurantMenu(resId);
   // };
+
+  const state = useOfflineHook();
+
+  if(state===false) return <h1>You are offline , Kindly check your internet connection!!!</h1>;
 
   return resDetails?.length===0 ? (
     <RestaurantShimmer />

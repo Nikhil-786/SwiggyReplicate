@@ -1,30 +1,16 @@
-import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { RES_MENU_URL } from "../utils/Constants";
 import Shimmer from "./Shimmer";
 import { MENU_IMG_URL } from "../utils/Constants";
 import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
+import useRestaurantMenu from "../hooks/useRestaurantMenu";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const dispatch = useDispatch();
-  console.log(resId);
-  const [resMenu, setResMenu] = useState(null);
-  //console.log(resMenu);
 
-  useEffect(() => {
-    console.log("Use effect called");
-    fetchData();
-  }, []);
 
-  const fetchData = async () => {
-    const data = await fetch(RES_MENU_URL + resId);
-    const json = await data.json();
-    console.log(json.data);
-    setResMenu(json.data);
-  };
-//this conditional rendering
+    const resMenu = useRestaurantMenu(resId);
 
   if (resMenu == null) return <Shimmer />;
 
@@ -43,9 +29,7 @@ const RestaurantMenu = () => {
       }
     );
 
-  console.log(category);
   const categories = category.map((data) => data?.card?.card);
-  console.log(categories);
 
   const handleClick = (data) => {
     dispatch(addItem(data));
@@ -65,16 +49,19 @@ const RestaurantMenu = () => {
         {itemCards?.map((data) => {
           return (
             <>
-              <ul key={data?.card?.info?.id} className="text-left mt-10 mx-64 text-wrap">
-                <div  className="flex justify-evenly flex-wrap">
+              <ul
+                key={data?.card?.info?.id}
+                className="text-left mt-10 mx-64 text-wrap"
+              >
+                <div className="flex justify-evenly flex-wrap">
                   <img
                     className=" ml-36 w-56 rounded-lg"
                     src={MENU_IMG_URL + data?.card?.info?.imageId}
                     alt="menuImg"
                   />
-                  <button 
+                  <button
                     className=" absolute border-solid border-4 h-12 my-36 ml-36 w-40 bg-white rounded-lg text-2xl font-bold text-green-700  "
-                    onClick={()=>handleClick(data)}
+                    onClick={() => handleClick(data)}
                   >
                     ADD
                   </button>

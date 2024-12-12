@@ -5,17 +5,36 @@ import ContactClass from "./ContactClass";
 class Help extends React.Component {
   constructor(props) {
     super(props);
-
-    console.log("Parent constructor called");
+    //intial state of user
+    this.state = {
+      userInfo: {
+        name: "DummyName",
+        url: "DummyUrl",
+        Avartar_Url: "Dummy Url",
+      },
+    };
   }
-  componentDidMount() {
-    console.log("Called Parent component did mount");
+  async componentDidMount() {
+    const data = await fetch("https://api.github.com/users/Nikhil-786");
+    const json = await data.json();
+
+    this.setState({
+      userInfo: json,
+    });
   }
 
   render() {
-    console.log("parent render is called");
+    debugger;
+    const { name, avatar_url, login } = this.state.userInfo;
+    console.log(this.state.userInfo);
     return (
       <div>
+        <div>
+          <h1>name:{name}</h1>
+          <img className="h-44 rounded-lg " src={avatar_url} alt="profileImg" />
+          <h1>Login:{login}</h1>
+        </div>
+
         <h1>This is the Help Page</h1>
         <Contact name={"Yashvir"} />
         <ContactClass
