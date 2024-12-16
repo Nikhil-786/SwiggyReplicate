@@ -9,8 +9,7 @@ const RestaurantMenu = () => {
   const { resId } = useParams();
   const dispatch = useDispatch();
 
-
-    const resMenu = useRestaurantMenu(resId);
+  const resMenu = useRestaurantMenu(resId);
 
   if (resMenu == null) return <Shimmer />;
 

@@ -5,6 +5,7 @@ import RestaurantCard from "./RestaurantCards";
 import { Link } from "react-router-dom";
 import RestaurantShimmer from "./RestaurantShimmer";
 import useOfflineHook from "../hooks/useOfflineHook";
+import { resDiscounts } from "./RestaurantCards";
 
 const Browse = () => {
   useMovieHooks();
@@ -19,6 +20,10 @@ const Browse = () => {
       store?.movies?.Items[0]?.data?.cards[1]?.card?.card?.gridElements
         ?.infoWithStyle?.restaurants
   );
+
+   const RestaurantCardDiscounted = resDiscounts(RestaurantCard);
+console.log(resDetails);
+
 console.log(resDetails?.length);
   // if (resDetails.length == null) return <RestaurantShimmer />;
 
@@ -50,10 +55,16 @@ console.log(resDetails?.length);
         >
           {resDetails?.map((restaurant) => (
             <Link to={"/restaurant/" + restaurant.info.id}>
-              <RestaurantCard
-                key={restaurant.info.id}
-                resDetails={restaurant}
-              ></RestaurantCard>
+              
+          
+              {
+               Object.keys(restaurant?.info?.aggregatedDiscountInfoV3).length!==0 ?
+               <RestaurantCardDiscounted key={restaurant.info.id} resDetails={restaurant}></RestaurantCardDiscounted>
+              : <RestaurantCard key={restaurant.info.id}
+              resDetails={restaurant}
+            ></RestaurantCard>
+              }
+              
             </Link>
           ))}
         </div>
